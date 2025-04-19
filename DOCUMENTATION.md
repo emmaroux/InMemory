@@ -9,6 +9,8 @@
   - [1.3 Permissions et Rôles](#13-permissions-et-rôles)
   - [1.4 API Endpoints](#14-api-endpoints)
 - [2. Configuration de l'Environnement](#2-configuration-de-lenvironnement)
+  - [2.1 Installation de Strapi](#21-installation-de-strapi)
+  - [2.2 Configuration de la Base de Données](#22-configuration-de-la-base-de-données)
 - [3. Déploiement](#3-déploiement)
 - [4. Sécurité](#4-sécurité)
 - [5. Maintenance et Monitoring](#5-maintenance-et-monitoring)
@@ -120,22 +122,55 @@ InMemory est une plateforme web permettant aux utilisateurs de partager et de vo
 
 ## 2. Configuration de l'Environnement
 
-### 2.1 Prérequis
-- Node.js (version LTS)
-- npm ou yarn
-- Base de données PostgreSQL
+### 2.1 Installation de Strapi
 
-### 2.2 Installation
+1. Créer le dossier du projet backend :
 ```bash
-# Création du projet Strapi
-npx create-strapi-app@latest inmemory-backend
-
-# Installation des dépendances
+mkdir inmemory-backend
 cd inmemory-backend
-npm install
+```
 
-# Démarrage du serveur de développement
+2. Installer Strapi :
+```bash
+npx create-strapi-app@latest .
+```
+
+3. Répondre aux questions de configuration :
+   - Installation type : Quickstart
+   - Language : JavaScript
+   - Database client : postgres
+   - Database name : inmemory
+   - Host : 127.0.0.1
+   - Port : 5432
+   - Username : postgres
+   - Password : [votre mot de passe]
+   - SSL : No
+
+4. Démarrer le serveur de développement :
+```bash
 npm run develop
+```
+
+5. Créer un compte administrateur :
+   - Accéder à http://localhost:1337/admin
+   - Suivre les instructions pour créer le premier compte administrateur
+
+### 2.2 Configuration de la Base de Données
+
+1. Installer PostgreSQL si ce n'est pas déjà fait
+2. Créer une base de données :
+```sql
+CREATE DATABASE inmemory;
+```
+
+3. Configurer les variables d'environnement dans `.env` :
+```
+DATABASE_CLIENT=postgres
+DATABASE_HOST=127.0.0.1
+DATABASE_PORT=5432
+DATABASE_NAME=inmemory
+DATABASE_USERNAME=postgres
+DATABASE_PASSWORD=votre_mot_de_passe
 ```
 
 ## 3. Déploiement
