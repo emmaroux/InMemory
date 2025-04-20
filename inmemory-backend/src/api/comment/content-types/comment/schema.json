@@ -4,17 +4,10 @@
   "info": {
     "singularName": "comment",
     "pluralName": "comments",
-    "displayName": "Commentaires",
-    "description": "Collection des commentaires"
+    "displayName": "Comment"
   },
-  "options": {},
-  "pluginOptions": {
-    "content-manager": {
-      "visible": true
-    },
-    "content-type-builder": {
-      "visible": true
-    }
+  "options": {
+    "draftAndPublish": false
   },
   "attributes": {
     "content": {
@@ -33,7 +26,8 @@
     "memory": {
       "type": "relation",
       "relation": "manyToOne",
-      "target": "api::memory.memory"
+      "target": "api::memory.memory",
+      "inversedBy": "comments"
     }
   }
 }

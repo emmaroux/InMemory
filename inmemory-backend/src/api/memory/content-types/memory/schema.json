@@ -4,17 +4,10 @@
   "info": {
     "singularName": "memory",
     "pluralName": "memories",
-    "displayName": "Mémoires",
-    "description": "Collection des mémoires"
+    "displayName": "Memory"
   },
-  "options": {},
-  "pluginOptions": {
-    "content-manager": {
-      "visible": true
-    },
-    "content-type-builder": {
-      "visible": true
-    }
+  "options": {
+    "draftAndPublish": false
   },
   "attributes": {
     "title": {
@@ -22,40 +15,39 @@
       "required": true
     },
     "content": {
-      "type": "richtext",
+      "type": "text",
       "required": true
     },
     "date": {
-      "type": "datetime",
+      "type": "date",
       "required": true
     },
-    "status": {
-      "type": "enumeration",
-      "enum": [
-        "draft",
-        "published"
-      ],
-      "default": "draft"
-    },
-    "author": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "plugin::users-permissions.user"
+    "location": {
+      "type": "string",
+      "required": true
     },
     "category": {
       "type": "relation",
       "relation": "manyToOne",
-      "target": "api::category.category"
+      "target": "api::category.category",
+      "inversedBy": "memories"
+    },
+    "user": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user"
     },
     "votes": {
       "type": "relation",
       "relation": "oneToMany",
-      "target": "api::vote.vote"
+      "target": "api::vote.vote",
+      "mappedBy": "memory"
     },
     "comments": {
       "type": "relation",
       "relation": "oneToMany",
-      "target": "api::comment.comment"
+      "target": "api::comment.comment",
+      "mappedBy": "memory"
     }
   }
 }

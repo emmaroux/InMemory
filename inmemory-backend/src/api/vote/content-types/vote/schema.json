@@ -4,17 +4,10 @@
   "info": {
     "singularName": "vote",
     "pluralName": "votes",
-    "displayName": "Votes",
-    "description": "Collection des votes"
+    "displayName": "Vote"
   },
-  "options": {},
-  "pluginOptions": {
-    "content-manager": {
-      "visible": true
-    },
-    "content-type-builder": {
-      "visible": true
-    }
+  "options": {
+    "draftAndPublish": false
   },
   "attributes": {
     "value": {
@@ -31,7 +24,8 @@
     "memory": {
       "type": "relation",
       "relation": "manyToOne",
-      "target": "api::memory.memory"
+      "target": "api::memory.memory",
+      "inversedBy": "votes"
     }
   }
 }

@@ -1,16 +1,19 @@
 module.exports = {
   collections: {
-    memories: {
+    partage: {
       kind: 'collectionType',
-      collectionName: 'memories',
+      collectionName: 'partages',
       attributes: {
         title: {
           type: 'string',
           required: true
         },
-        content: {
-          type: 'richtext',
+        url: {
+          type: 'string',
           required: true
+        },
+        image: {
+          type: 'string'
         },
         date: {
           type: 'datetime',
@@ -26,26 +29,21 @@ module.exports = {
           relation: 'manyToOne',
           target: 'plugin::users-permissions.user'
         },
-        category: {
+        team: {
           type: 'relation',
           relation: 'manyToOne',
-          target: 'api::category.category'
+          target: 'api::team.team'
         },
         votes: {
           type: 'relation',
           relation: 'oneToMany',
           target: 'api::vote.vote'
-        },
-        comments: {
-          type: 'relation',
-          relation: 'oneToMany',
-          target: 'api::comment.comment'
         }
       }
     },
-    categories: {
+    team: {
       kind: 'collectionType',
-      collectionName: 'categories',
+      collectionName: 'teams',
       attributes: {
         name: {
           type: 'string',
@@ -54,14 +52,14 @@ module.exports = {
         description: {
           type: 'text'
         },
-        memories: {
+        partages: {
           type: 'relation',
           relation: 'oneToMany',
-          target: 'api::memory.memory'
+          target: 'api::partage.partage'
         }
       }
     },
-    votes: {
+    vote: {
       kind: 'collectionType',
       collectionName: 'votes',
       attributes: {
@@ -76,34 +74,15 @@ module.exports = {
           relation: 'manyToOne',
           target: 'plugin::users-permissions.user'
         },
-        memory: {
+        partage: {
           type: 'relation',
           relation: 'manyToOne',
-          target: 'api::memory.memory'
-        }
-      }
-    },
-    comments: {
-      kind: 'collectionType',
-      collectionName: 'comments',
-      attributes: {
-        content: {
-          type: 'text',
-          required: true
+          target: 'api::partage.partage'
         },
-        date: {
-          type: 'datetime',
-          required: true
-        },
-        user: {
+        team: {
           type: 'relation',
           relation: 'manyToOne',
-          target: 'plugin::users-permissions.user'
-        },
-        memory: {
-          type: 'relation',
-          relation: 'manyToOne',
-          target: 'api::memory.memory'
+          target: 'api::team.team'
         }
       }
     }

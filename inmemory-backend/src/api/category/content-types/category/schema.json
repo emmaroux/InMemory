@@ -4,17 +4,10 @@
   "info": {
     "singularName": "category",
     "pluralName": "categories",
-    "displayName": "Catégories",
-    "description": "Collection des catégories"
+    "displayName": "Category"
   },
-  "options": {},
-  "pluginOptions": {
-    "content-manager": {
-      "visible": true
-    },
-    "content-type-builder": {
-      "visible": true
-    }
+  "options": {
+    "draftAndPublish": false
   },
   "attributes": {
     "name": {
@@ -22,12 +15,14 @@
       "required": true
     },
     "description": {
-      "type": "text"
+      "type": "text",
+      "required": true
     },
     "memories": {
       "type": "relation",
       "relation": "oneToMany",
-      "target": "api::memory.memory"
+      "target": "api::memory.memory",
+      "mappedBy": "category"
     }
   }
 }
