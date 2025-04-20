@@ -1,0 +1,33 @@
+{
+  "schema": {
+    "info": {
+      "singularName": "category",
+      "pluralName": "categories",
+      "displayName": "Catégories",
+      "description": "Collection des catégories"
+    },
+    "options": {},
+    "pluginOptions": {
+      "content-manager": {
+        "visible": true
+      },
+      "content-type-builder": {
+        "visible": true
+      }
+    },
+    "attributes": {
+      "name": {
+        "type": "string",
+        "required": true
+      },
+      "description": {
+        "type": "text"
+      },
+      "memories": {
+        "type": "relation",
+        "relation": "oneToMany",
+        "target": "api::memory.memory"
+      }
+    }
+  }
+}
